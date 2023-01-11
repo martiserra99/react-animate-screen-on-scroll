@@ -7,8 +7,9 @@ gsap.registerPlugin(ScrollTrigger);
  * It contains all the login to set up the scroll animation.
  */
 class ScrollAnimation {
-  constructor(phases) {
+  constructor(phases, config = {}) {
     this._phases = this._setupPhases(phases);
+    this._config = this._setupConfig(config);
     this._timeline = null;
   }
 
@@ -19,6 +20,20 @@ class ScrollAnimation {
       result.set(phase, data);
     }
     return result;
+  }
+
+  _setupConfig(config) {
+    return {
+      scrub: config.scrub ?? 2,
+      snap: {
+        delay: config.snap?.delay ?? 0,
+        duration: {
+          min: config.snap?.duration?.min ?? 1,
+          max: config.snap?.duration?.max ?? 2,
+        },
+        ease: config.snap?.ease ?? "power1.inOut",
+      },
+    };
   }
 
   getHeight() {
@@ -85,12 +100,15 @@ class ScrollAnimation {
         trigger: scroll,
         start: "top top",
         end: "bottom bottom",
-        scrub: 2,
+        scrub: this._config.scrub,
         snap: {
           snapTo: "labelsDirectional",
-          delay: 0,
-          duration: { min: 1, max: 2 },
-          ease: "power1.inOut",
+          delay: this._config.snap.delay,
+          duration: {
+            min: this._config.snap.duration.min,
+            max: this._config.snap.duration.max,
+          },
+          ease: this._config.snap.ease,
         },
       },
     });

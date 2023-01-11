@@ -7,8 +7,8 @@ import ScrollAnimationContext from "../context/scroll-animation-context";
  * This component wraps all the components that need to be animated and defines
  * all the phases of the scroll animation.
  */
-function PageScrollAnimation({ children, phases }) {
-  const scrollAnimation = useState(() => new ScrollAnimation(phases))[0];
+function PageScrollAnimation({ children, phases, config = {} }) {
+  const [scrollAnimation] = useState(() => new ScrollAnimation(phases, config));
   const scrollReference = useRef();
 
   useLayoutEffect(() => {

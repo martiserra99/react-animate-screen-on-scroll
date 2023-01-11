@@ -386,3 +386,49 @@ We have to create a function using the `useCallback()` hook that will receive a 
 - **time**: It is a number between 0 and 1 and defines the time in which the callback will be called.
 
 - **callback**: It is the callback that will be called.
+
+## Configure Scroll Animation
+
+We can make some adjustments to some parameters of the scroll animation. To do that we can use the prop **config** of `PageScrollAnimation`:
+
+```javascript
+// ...
+
+import Boxes from "./Boxes/Boxes";
+
+function App() {
+  return (
+    <PageScrollAnimation
+      phases={phases}
+      config={{
+        scrub: 2,
+        snap: {
+          delay: 0,
+          duration: { min: 1, max: 2 },
+          ease: "power1.inOut",
+        },
+      }}
+    >
+      <Boxes />
+    </PageScrollAnimation>
+  );
+}
+
+// ...
+```
+
+The **config** prop receives an object as parameter with some configuration options. We used all the configuration options and we used their default values. These options are:
+
+- **scrub**: Determines the time that the animation will take to catch up with the scrollbar.
+
+- **snap**: This option is used to configure the snap and it has these nested options:
+
+  - **delay**: The delay between the last scroll event and the start of the snapping animation.
+
+  - **duration**: The duration of the snap. It has these nested options:
+
+    - **min**: The minimum duration of the snap.
+
+    - **max**: The maximum duration of the snap.
+
+  - **ease**: It is the ease that the snapping animation should use.
