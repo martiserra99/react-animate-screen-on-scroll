@@ -1,6 +1,6 @@
 # React Animate Screen On Scroll
 
-This package is used in React to animate the screen while you are scrolling. It uses GSAP under the hood and it is very simple to use. This is an example of website that uses this library: [https://momentsapp.xyz](https://momentsapp.xyz).
+This package is used in React to animate the screen while you are scrolling. It uses GSAP under the hood and it is very simple to use. [Click here](https://moments-web-alpha.vercel.app/) to view an example of a website that uses this library.
 
 ## How To Use
 
