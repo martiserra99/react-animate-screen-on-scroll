@@ -1,6 +1,6 @@
 {
   "name": "react-animate-screen-on-scroll",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "It is a react package that is used to animate the screen when scrolling. It uses GSAP under the hood.",
   "keywords": [
     "javascript",
